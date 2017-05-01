@@ -18,3 +18,7 @@ Route::get('/book/search/{name?}', 'BookController@search');
 Route::get('/', function(){
 	return 'welcome';
 });
+
+Route::get('/admin/book', function(){
+	return view('books.index');
+});

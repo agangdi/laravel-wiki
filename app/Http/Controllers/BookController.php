@@ -9,10 +9,7 @@ class BookController extends Controller
     //
 	public function get(Request $request, $id=null)
 	{
-		$this->validate($request, [
-			'id' => 'bail|numeric',
-		]);
-		var_dump($id);
+		return view('books.index');
 	}
 
 	public function search(Request $request, $name)
