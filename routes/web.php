@@ -11,52 +11,10 @@
 |
 */
 
-use App\Task;
-use Illuminate\Http\Request;
+Route::get('/book/{id?}', 'BookController@get')->where('id', '[0-9]+');;
 
+Route::get('/book/search/{name?}', 'BookController@search');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+	return 'welcome';
 });
-
-
-/**
- * Display All Tasks
- */
-Route::get('/task', function () {
-    $tasks = Task::orderBy('created_at', 'asc')->get();
-
-    return view('tasks', [
-        'tasks' => $tasks
-    ]);
-});
-
-/**
- * Add A New Task
- */
-Route::post('/task', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|max:255',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-    }
-
-    $task = new Task;
-    $task->name = $request->name;
-    $task->save();
-
-    return redirect('/task');
-});
-
-/**
- * Delete An Existing Task
- */
-Route::delete('/task/{id}', function ($id) {
-    Task::findOrFail($id)->delete();
-    return redirect('/task');
-});
-
