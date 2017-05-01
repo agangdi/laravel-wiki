@@ -12,4 +12,10 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .js('resources/assets/js/admin.js', 'public/js')
+   .js('node_modules/vuetify/dist/vuetify.min.js', 'public/js')
+   .styles(['node_modules/vuetify/dist/vuetify.min.css'], 'public/css/vuetify.css')
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .sourceMaps()
+   .extract(['vue']);
+   //.version();
