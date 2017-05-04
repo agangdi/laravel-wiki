@@ -17,4 +17,19 @@ class BookController extends Controller
 		$input = $request->all();
 		return $input;
 	}
+
+	/**
+	 * @desc post
+	 * @param Request $request
+	 * @param null $id
+	 *  null create, int edit
+	 */
+	public function post(Request $request, $id=null)
+	{
+		return [
+			'code' => 403
+		];
+		$input = $request->all();
+		return array_merge($input, ['id' => $id]);
+	}
 }

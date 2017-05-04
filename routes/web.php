@@ -11,6 +11,9 @@
 |
 */
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Key");
+
 Route::get('/book/{id?}', 'BookController@get')->where('id', '[0-9]+');;
 
 Route::get('/book/search/{name?}', 'BookController@search');
@@ -19,6 +22,3 @@ Route::get('/', function(){
 	return 'welcome';
 });
 
-Route::get('/admin/book', function(){
-	return view('books.index');
-});

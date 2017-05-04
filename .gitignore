@@ -13,3 +13,7 @@ npm-debug.log
 /storage/*
 /public/js
 /public/css
+/wiki-admin/node_modules
+/wiki-admin/dist
+/wiki-admin/selenium-debug.log
+admin/

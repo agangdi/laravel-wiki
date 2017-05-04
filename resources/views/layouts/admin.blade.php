@@ -12,6 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="{{ mix("/css/vuetify.css") }}">
     <link rel="stylesheet" href="{{ asset("/bower_components/adminLTE/bootstrap/css/bootstrap.min.css") }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -24,7 +25,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="{{ asset("/bower_components/adminLTE/dist/css/skins/skin-blue.min.css") }}">
-    <link rel="stylesheet" href="{{ mix("/css/vuetify.css") }}">
     <!-- 引入样式 -->
     <script>
         // rename myToken as you like
