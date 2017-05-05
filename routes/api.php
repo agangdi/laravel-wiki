@@ -15,12 +15,19 @@ use App\Http\Middleware\CheckCORS;
 */
 
 Route::group(['middleware' => 'cors'], function () {
-    Route::group(['prefix' => '/book'], function(){
 
-        Route::post('/{id?}', 'BookController@post')->where('id', '[0-9]+');;
-        Route::options('/{id?}', 'BookController@post');
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: Origin, x-email, x-token, Content-Type, Accept, Key");
 
+    Route::group(['middleware' => 'wauth'], function() {
+        Route::group(['prefix' => '/book'], function(){
+            Route::post('/{id?}', 'BookController@post')->where('id', '[0-9]+');;
+        });
+        Route::post('/reg', 'User\RegController');
+
+        Route::get('/user', 'User\IndexController');
     });
+
 
     Route::post('/login', 'User\LoginController');
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Services\ResService;
+use App\Services\WAuthService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -15,17 +17,18 @@ class LoginController extends Controller
 			'email' => 'bail|required|email',
 			'password' => 'required',
 		]);
-		$email = $request->input['email'];
-		$password = $request->input['password'];
+
+		$email = $request->input('email', '');
+		$password = $request->input('password', '');
+
 		if (Auth::attempt(['email' => $email, 'password' => $password])) {
-			return [
-				'code' => 0,
-				'token' => sha1('salt' . $email . $password) . time()
+			$data = [
+				'token' => WAuthService::encrypt($email, $password)
 			];
+			return ResService::ok($data);
 		}
 
-		return [
-			'code' => 403
-		];
+		return ResService::error(-1, '登录失败');
+
 	}
 }

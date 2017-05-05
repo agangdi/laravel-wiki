@@ -42,6 +42,9 @@ class Kernel extends HttpKernel
         ],
         'cors' => [
             \App\Http\Middleware\CheckCORS::class,
+        ],
+        'wauth' => [
+            \App\Http\Middleware\WAuth::class,
         ]
     ];
 
