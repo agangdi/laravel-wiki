@@ -20,9 +20,15 @@ Route::group(['middleware' => 'cors'], function () {
     header("Access-Control-Allow-Headers: Origin, x-email, x-token, Content-Type, Accept, Key");
 
     Route::group(['middleware' => 'wauth'], function() {
+
         Route::group(['prefix' => '/book'], function(){
+
             Route::post('/{id?}', 'BookController@post')->where('id', '[0-9]+');;
+            Route::get('/{id}', 'BookController@detail');
+            Route::get('', 'BookController@get');
+
         });
+
         Route::post('/reg', 'User\RegController');
 
         Route::get('/user', 'User\IndexController');

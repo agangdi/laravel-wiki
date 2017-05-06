@@ -17,3 +17,4 @@ npm-debug.log
 /wiki-admin/dist
 /wiki-admin/selenium-debug.log
 admin/
+.phpstorm.meta.php

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Services\ResService;
 use App\Services\WAuthService;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,9 @@ class LoginController extends Controller
 			$data = [
 				'token' => WAuthService::encrypt($email, $password)
 			];
+			$user = User::where('email', $email)->first();
+			$user->remember_token = $data['token'];
+			$user->save();
 			return ResService::ok($data);
 		}
 

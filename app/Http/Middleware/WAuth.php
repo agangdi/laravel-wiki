@@ -20,8 +20,9 @@ class WAuth
     {
         $email = $request->header('x-email');
         $token = $request->header('x-token');
-        $user = User::where('email', $email)->first();
-        if(empty($user) || WAuthService::verify($email, $user['password'], $token)) {
+
+
+        if(!WAuthService::verify($email, $token)) {
             return ResService::error(ResService::NOT_LOGIN_CODE, '尚未登录');
         }
         return $next($request);
