@@ -18,6 +18,7 @@ class BookController extends Controller
 
 	public function detail($id)
 	{
+		return ResService::ok(Book::findOrFail($id)->delete());
 	}
 
 	public function del($id)

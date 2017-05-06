@@ -18,3 +18,4 @@ npm-debug.log
 /wiki-admin/selenium-debug.log
 admin/
 .phpstorm.meta.php
+_ide_helper.php
