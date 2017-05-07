@@ -18,6 +18,7 @@ Route::group(['middleware' => 'cors'], function () {
 
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Headers: Origin, x-email, x-token, Content-Type, Accept, Key");
+	header("Access-Control-Allow-Methods: GET, POST, OPTIONS, DELETE");
 
     Route::group(['middleware' => 'wauth'], function() {
 
@@ -26,6 +27,12 @@ Route::group(['middleware' => 'cors'], function () {
             Route::post('/{id?}', 'BookController@post')->where('id', '[0-9]+');;
             Route::get('/{id}', 'BookController@detail');
             Route::get('', 'BookController@get');
+	        Route::delete('/{id?}', 'BookController@del')->where('id', '[0-9]+');;
+
+	        Route::post('/chapter', 'Book\ChapterController@post');
+	        Route::get('/{book_id}/chapter', 'Book\ChapterController@index')
+		        ->where('book_id', '[0-9]+');
+	        Route::get('/chapter/{id}', 'Book\ChapterController@detail')->where('id', '[0-9]+');
 
         });
 
